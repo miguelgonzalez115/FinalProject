@@ -1,10 +1,10 @@
 ﻿/*
-
-MIGUEL GONZALEZ
-April - 2023
-Final Project for  PROGRAMMING FUNDAMENTALS (CS-1400-001)
+*******************************************************************
+    MIGUEL GONZÁLEZ
+    April - 2023
+    Final Project for  PROGRAMMING FUNDAMENTALS (CS-1400-001)
     "Inventory system"
-
+*******************************************************************
 */
 
 using System;
@@ -141,17 +141,7 @@ class Program
                         inventory.RemoveItem(removeItems[0]);
                         Console.WriteLine($"Item '{removeName}' removed from inventory.");
                     }
-                    else
-                     {
-                        Console.WriteLine($"Multiple items found with the name '{removeName}'. Please choose the index of the item you want to remove:");
-                        for (int i = 0; i < removeItems.Count; i++)
-                        {
-                            Console.WriteLine($"{i}. {removeItems[i].Name} ({removeItems[i].Quantity} x ${removeItems[i].Price})");
-                        }
-                        int removeIndex = int.Parse(Console.ReadLine());
-                        inventory.RemoveItem(removeItems[removeIndex]);
-                        Console.WriteLine($"Item '{removeName}' removed from inventory.");
-                    }
+                    
                     break;
                 case "3":
                     Console.WriteLine("Please enter the name of the item you want to edit:");
@@ -159,7 +149,7 @@ class Program
                     List<Item> editItems = inventory.GetItems().FindAll(i => i.Name == editName);
                     if (editItems.Count == 0)
                     {
-                        Console.WriteLine($"No item with the name '{editName}' found in inventory.");
+                       Console.WriteLine($"No item with the name '{editName}' found in inventory.");
                     }
                     else if (editItems.Count == 1)
                     {
@@ -173,24 +163,7 @@ class Program
                         inventory.EditItem(editItems[0], newName, newQuantity, newPrice);
                         Console.WriteLine($"Item '{editName}' updated in inventory.");
                     }
-                    else
-                    {
-                        Console.WriteLine($"Multiple items found with the name '{editName}'. Please choose the index of the item you want to edit:");
-                        for (int i = 0; i < editItems.Count; i++)
-                        {
-                            Console.WriteLine($"{i}. {editItems[i].Name} ({editItems[i].Quantity} x ${editItems[i].Price})");
-                        }
-                        int editIndex = int.Parse(Console.ReadLine());
-                        Console.WriteLine($"Editing item '{editName}'...");
-                        Console.WriteLine("Please enter the new name of the item:");
-                        string newName = Console.ReadLine();
-                        Console.WriteLine("Please enter the new quantity of the item:");
-                        int newQuantity = int.Parse(Console.ReadLine());
-                        Console.WriteLine("Please enter the new price of the item:");
-                        double newPrice = double.Parse(Console.ReadLine());
-                        inventory.EditItem(editItems[editIndex], newName, newQuantity, newPrice);
-                        Console.WriteLine($"Item '{editName}' updated in inventory.");
-                    }
+                    
                     break;
                 case "4":
                     Console.WriteLine("Current inventory:");
